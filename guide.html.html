@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Friendly HTML Guide — Single File</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--muted:#9aa4b2;--glass:rgba(255,255,255,0.03)}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0;background:linear-gradient(180deg,#071023 0%, #081225 100%);color:#e6eef6}
+    header{padding:28px 24px;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;gap:16px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700;color:#032;box-shadow:0 6px 20px rgba(3,6,23,0.6)}
+    header h1{font-size:20px;margin:0}
+    header p{margin:0;color:var(--muted);font-size:13px}
+    main{display:grid;grid-template-columns:300px 1fr;gap:20px;padding:24px}
+    nav{position:sticky;top:18px;height:calc(100vh - 40px);overflow:auto;padding:18px;background:var(--card);border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    nav h2{font-size:14px;margin:0 0 12px}
+    nav a{display:block;color:var(--muted);text-decoration:none;padding:8px;border-radius:8px}
+    nav a:hover{background:var(--glass);color:#fff}
+    article{padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    section{margin-bottom:20px}
+    h3{margin:0 0 8px}
+    p{margin:0 0 12px;color:#d8e6f2}
+    pre{background:#021226;padding:12px;border-radius:8px;overflow:auto;border:1px solid rgba(255,255,255,0.02)}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Roboto Mono,monospace;font-size:13px}
+    .example{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);margin-bottom:12px}
+    .tools{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+    button.copy{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;color:var(--muted);cursor:pointer}
+    footer{padding:18px 24px;text-align:center;color:var(--muted);font-size:13px}
+    .badge{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.02);color:var(--muted);font-size:12px}
+    @media (max-width:900px){main{grid-template-columns:1fr}nav{height:auto;position:static}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">HTML</div>
+    <div>
+      <h1>Friendly HTML Guide</h1>
+      <p>A complete, easy-to-read single-file HTML guide with examples you can copy.</p>
+    </div>
+  </header>
+
+  <main>
+    <nav>
+      <h2>Contents</h2>
+      <a href="#intro">Introduction</a>
+      <a href="#structure">Document Structure</a>
+      <a href="#text">Text & Headings</a>
+      <a href="#links-images">Links & Images</a>
+      <a href="#lists-tables">Lists & Tables</a>
+      <a href="#forms">Forms</a>
+      <a href="#semantic">Semantic HTML</a>
+      <a href="#layout">Layout: Flex & Grid</a>
+      <a href="#media">Audio & Video</a>
+      <a href="#accessibility">Accessibility Tips</a>
+      <a href="#meta">Meta Tags & SEO</a>
+      <a href="#cheatsheet">Cheat Sheet</a>
+      <a href="#challenges">Practice Challenges</a>
+      <a href="#resources">Further Resources</a>
+    </nav>
+
+    <article>
+      <section id="intro">
+        <h3>1. Introduction — what is HTML?</h3>
+        <p>HTML stands for <strong>HyperText Markup Language</strong>. It's the skeleton of every webpage. Think of HTML as the structure and content (headings, paragraphs, images), CSS as the clothing (style), and JavaScript as the behavior (actions).</p>
+      </section>
+
+      <section id="structure">
+        <h3>2. Basic document structure</h3>
+        <p>Every HTML file usually starts like this. Save it as <code>index.html</code> and open in your browser.</p>
+        <div class="tools"><button class="copy" data-target="#code-basic">Copy example</button></div>
+        <pre id="code-basic"><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, world!&lt;/h1&gt;
+    &lt;p&gt;This is my first page.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </section>
+
+      <section id="text">
+        <h3>3. Text, headings & paragraphs</h3>
+        <p>Use headings for structure: <code>&lt;h1&gt;</code> is top-level, down to <code>&lt;h6&gt;</code>. Use <code>&lt;p&gt;</code> for paragraphs. Use <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code> for emphasis.</p>
+        <div class="example">
+          <strong>Example:</strong>
+          <pre><code>&lt;h1&gt;Welcome&lt;/h1&gt;
+&lt;p&gt;This is a simple paragraph. You can &lt;strong&gt;bold&lt;/strong&gt; or &lt;em&gt;italicize&lt;/em&gt; text.&lt;/p&gt;</code></pre>
+        </div>
+      </section>
+
+      <section id="links-images">
+        <h3>4. Links & Images</h3>
+        <p>Links use <code>&lt;a href="..."&gt;</code>. Images use <code>&lt;img src="..." alt="..."&gt;</code>. Always include <code>alt</code> for accessibility.</p>
+        <div class="example">
+          <pre><code>&lt;a href="https://example.com" target="_blank" rel="noopener"&gt;Visit Example&lt;/a&gt;
+
+&lt;img src="https://via.placeholder.com/200" alt="Placeholder image" width="200"&gt;</code></pre>
+        </div>
+      </section>
+
+      <section id="lists-tables">
+        <h3>5. Lists & Tables</h3>
+        <p>Use <code>&lt;ul&gt;</code> for unordered lists, <code>&lt;ol&gt;</code> for ordered. Tables use <code>&lt;table&gt;</code>, but keep tables for tabular data.</p>
+        <div class="example">
+          <pre><code>&lt;ul&gt;
+  &lt;li&gt;Apples&lt;/li&gt;
+  &lt;li&gt;Bananas&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Age&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Aisha&lt;/td&gt;&lt;td&gt;28&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        </div>
+      </section>
+
+      <section id="forms">
+        <h3>6. Forms (collecting user input)</h3>
+        <p>Forms let you collect input. Each input needs a <code>name</code>. Use labels for usability and accessibility.</p>
+        <div class="example">
+          <pre><code>&lt;form action="/submit" method="post"&gt;
+  &lt;label&gt;Name: &lt;input type="text" name="name" required&gt;&lt;/label&gt;
+  &lt;label&gt;Email: &lt;input type="email" name="email" required&gt;&lt;/label&gt;
+  &lt;button type="submit"&gt;Send&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+      </section>
+
+      <section id="semantic">
+        <h3>7. Semantic HTML (meaningful tags)</h3>
+        <p>Semantic tags help browsers and screen readers understand content: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>.</p>
+        <div class="example">
+          <pre><code>&lt;header&gt;&lt;h1&gt;Blog&lt;/h1&gt;&lt;/header&gt;
+&lt;main&gt;
+  &lt;article&gt;...&lt;/article&gt;
+  &lt;aside&gt;Related links&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer&gt;© 2025&lt;/footer&gt;</code></pre>
+        </div>
+      </section>
+
+      <section id="layout">
+        <h3>8. Layout: Flexbox & Grid basics</h3>
+        <p>Use CSS for layout. Here are tiny examples to start. You will write CSS inside <code>&lt;style&gt;</code> or an external file.</p>
+        <div class="example">
+          <pre><code>/* Flexbox */
+.container{display:flex;gap:12px}
+.item{flex:1;padding:12px}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:1fr 2fr;gap:12px}</code></pre>
+        </div>
+        <p>Flexbox is great for 1D (row/column). Grid is best for 2D layouts.</p>
+      </section>
+
+      <section id="media">
+        <h3>9. Audio & Video</h3>
+        <p>Use the native tags. Provide captions or transcripts when possible.</p>
+        <div class="example">
+          <pre><code>&lt;audio controls&gt;&lt;source src="audio.mp3" type="audio/mpeg"&gt;Your browser doesn't support audio.&lt;/audio&gt;
+
+&lt;video controls width="480"&gt;&lt;source src="video.mp4" type="video/mp4"&gt;Your browser doesn't support video.&lt;/video&gt;</code></pre>
+        </div>
+      </section>
+
+      <section id="accessibility">
+        <h3>10. Accessibility (a11y) tips</h3>
+        <p>Small steps that make a big difference:</p>
+        <ul>
+          <li>Use descriptive <code>alt</code> text for images.</li>
+          <li>Use <code>&lt;label&gt;</code> for form controls.</li>
+          <li>Provide keyboard focus styles and logical tab order.</li>
+          <li>Use ARIA only when necessary (don't replace semantic HTML).</li>
+        </ul>
+      </section>
+
+      <section id="meta">
+        <h3>11. Meta tags & SEO basics</h3>
+        <p>Important meta tags go in the head:</p>
+        <div class="example">
+          <pre><code>&lt;meta name="description" content="Short description of the page"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
+        </div>
+      </section>
+
+      <section id="cheatsheet">
+        <h3>12. Quick cheat sheet</h3>
+        <p>Common tags at a glance:</p>
+        <pre><code>&lt;!-- Document --&gt;
+&lt;!doctype html&gt; &lt;html&gt; &lt;head&gt; &lt;body&gt;
+
+&lt;!-- Text --&gt; &lt;h1&gt; &lt;h2&gt; &lt;p&gt; &lt;strong&gt; &lt;em&gt;
+
+&lt;!-- Links & Images --&gt; &lt;a href&gt; &lt;img src alt&gt;
+
+&lt;!-- Lists --&gt; &lt;ul&gt; &lt;ol&gt; &lt;li&gt;
+
+&lt;!-- Forms --&gt; &lt;form&gt; &lt;input&gt; &lt;label&gt; &lt;button&gt;
+
+&lt;!-- Semantic --&gt; &lt;header&gt; &lt;nav&gt; &lt;main&gt; &lt;article&gt; &lt;footer&gt;</code></pre>
+      </section>
+
+      <section id="challenges">
+        <h3>13. Practice challenges</h3>
+        <p>Try these to learn faster:</p>
+        <ol>
+          <li>Create a personal profile page with a photo and contact form.</li>
+          <li>Build a two-column layout using CSS Grid that becomes one column on mobile.</li>
+          <li>Make an accessible navigation menu — keyboard friendly.</li>
+        </ol>
+      </section>
+
+      <section id="resources">
+        <h3>14. Further resources</h3>
+        <p>Study deeper at MDN Web Docs, W3C, and free learning sites like freeCodeCamp. Search for "MDN HTML" for detailed references.</p>
+      </section>
+
+      <section>
+        <h3>Live bits</h3>
+        <p class="badge">This file includes copy buttons — try them!</p>
+      </section>
+
+    </article>
+  </main>
+
+  <footer>
+    Made with ☕ — Edit this file, try the examples, and have fun. If you want a printable PDF, or a version with more examples, tell me what you'd like next.
+  </footer>
+
+  <script>
+    // Copy-to-clipboard for code blocks
+    document.querySelectorAll('button.copy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = document.querySelector(btn.dataset.target);
+        if(!target) return;
+        const text = target.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          btn.innerText = 'Copied!';
+          setTimeout(() => btn.innerText = 'Copy example', 1200);
+        }).catch(()=>{ btn.innerText='Copy failed'; setTimeout(()=>btn.innerText='Copy example',1200);});
+      });
+    });
+
+    // Make all <pre><code> blocks selectable with triple click and nicer font size on small screens
+    document.querySelectorAll('pre code').forEach(el => el.addEventListener('dblclick', () => {
+      // select text for convenience
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }));
+  </script>
+</body>
+</html>
